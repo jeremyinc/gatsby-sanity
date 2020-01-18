@@ -7,7 +7,10 @@ const Index = ({ data }) => {
   return (
     <div style={{ fontFamily: "system-ui" }}>
       {allSanityPost.edges.map(({ node }) => (
-        <h1>{node.title}</h1>
+        <>
+          <h1>{node.title}</h1>
+          <h3>{node.description}</h3>
+        </>
       ))}
     </div>
   )
@@ -21,6 +24,7 @@ export const data = graphql`
       edges {
         node {
           title
+          description
         }
       }
     }
