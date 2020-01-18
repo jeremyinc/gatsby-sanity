@@ -1,3 +1,28 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
-export default () => <div>Hello world!</div>
+const Index = ({ data }) => {
+  console.log(data)
+  var { allSanityPost } = data
+  return (
+    <div style={{ fontFamily: "system-ui" }}>
+      {allSanityPost.edges.map(({ node }) => (
+        <h1>{node.title}</h1>
+      ))}
+    </div>
+  )
+}
+
+export default Index
+
+export const data = graphql`
+  query MyQuery {
+    allSanityPost {
+      edges {
+        node {
+          title
+        }
+      }
+    }
+  }
+`
