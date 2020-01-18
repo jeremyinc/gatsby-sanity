@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import Img from "gatsby-image"
 
 const Index = ({ data }) => {
   console.log(data)
@@ -10,6 +11,7 @@ const Index = ({ data }) => {
         <>
           <h1>{node.title}</h1>
           <h3>{node.description}</h3>
+          <Img fluid={node.mainImage.asset.fluid} />
         </>
       ))}
     </div>
@@ -19,12 +21,19 @@ const Index = ({ data }) => {
 export default Index
 
 export const data = graphql`
-  query MyQuery {
+  query Myquery {
     allSanityPost {
       edges {
         node {
           title
           description
+          mainImage {
+            asset {
+              fluid {
+                ...GatsbySanityImageFluid
+              }
+            }
+          }
         }
       }
     }

@@ -17,5 +17,7 @@ module.exports = {
         // token: process.env.MY_SANITY_TOKEN,
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
 }
