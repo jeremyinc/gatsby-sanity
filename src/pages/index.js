@@ -11,6 +11,7 @@ const Index = ({ data }) => {
         <>
           <h1>{node.title}</h1>
           <h3>{node.description}</h3>
+          <h4>{node.author.name}</h4>
           <Img fluid={node.mainImage.asset.fluid} />
         </>
       ))}
@@ -27,6 +28,9 @@ export const data = graphql`
         node {
           title
           description
+          author {
+            name
+          }
           mainImage {
             asset {
               fluid {
